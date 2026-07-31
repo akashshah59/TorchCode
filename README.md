@@ -393,17 +393,40 @@ Thanks to everyone who has contributed to TorchCode.
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/laitifranz">
+                    <img src="https://avatars.githubusercontent.com/u/25352428?v=4" width="100;" alt="laitifranz"/>
+                    <br />
+                    <sub><b>laitifranz</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/hrlics">
+                    <img src="https://avatars.githubusercontent.com/u/90754112?v=4" width="100;" alt="hrlics"/>
+                    <br />
+                    <sub><b>hrlics</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/HareshKarnan">
                     <img src="https://avatars.githubusercontent.com/u/5285984?v=4" width="100;" alt="HareshKarnan"/>
                     <br />
                     <sub><b>HareshKarnan</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/ThierryHJ">
                     <img src="https://avatars.githubusercontent.com/u/51846529?v=4" width="100;" alt="ThierryHJ"/>
                     <br />
                     <sub><b>ThierryHJ</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/reidemeister94">
+                    <img src="https://avatars.githubusercontent.com/u/28828348?v=4" width="100;" alt="reidemeister94"/>
+                    <br />
+                    <sub><b>reidemeister94</b></sub>
                 </a>
             </td>
 		</tr>
