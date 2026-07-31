@@ -33,6 +33,9 @@ FROM build-base AS labext-builder
 # Copy manifests first so dependency install is cacheable between source edits.
 WORKDIR /src/labextension
 COPY labextension/.yarnrc.yml labextension/package.json labextension/pyproject.toml labextension/tsconfig.json labextension/install.json ./
+# Yarn resolutions reference a local patch (license-webpack-plugin fix); it must
+# exist before `jlpm install` resolves dependencies.
+COPY labextension/.yarn ./.yarn
 RUN jlpm install
 
 COPY labextension/style ./style
@@ -52,10 +55,13 @@ WORKDIR /app
 
 COPY --from=judge-builder /tmp/wheels /tmp/wheels
 COPY --from=labext-builder /tmp/wheels /tmp/wheels
+# torch >=2 treats NumPy as optional; without it `import torch` prints a
+# "Failed to initialize NumPy" warning and tensor<->numpy interop is disabled.
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir \
       torch --index-url https://download.pytorch.org/whl/cpu && \
     pip install --no-cache-dir \
+      numpy \
       /tmp/wheels/*.whl && \
     rm -rf /tmp/wheels
 
