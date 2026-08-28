@@ -13,6 +13,12 @@ from api.parser import get_all_templates
 
 app = FastAPI(title="TorchCode UI Backend")
 
+# Where the user's own passing solutions get saved, separate from the
+# repo's reference answer key in solutions/
+MY_SOLUTIONS_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "my_solutions"
+)
+
 # Allow CORS for local frontend development
 app.add_middleware(
     CORSMiddleware,
@@ -58,4 +64,8 @@ def get_task_details(task_id: str):
 @app.post("/api/submit/{task_id}")
 def submit_code(task_id: str, request: SubmitRequest):
     result = execute_code(task_id, request.code)
+    if result.get("success") and task_id in TASKS:
+        os.makedirs(MY_SOLUTIONS_DIR, exist_ok=True)
+        with open(os.path.join(MY_SOLUTIONS_DIR, f"{task_id}.py"), "w") as f:
+            f.write(request.code)
     return result
